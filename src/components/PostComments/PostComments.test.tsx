@@ -17,7 +17,16 @@ describe("Teste para o componente PostComment", () => {
             },
         });
         fireEvent.click(screen.getByTestId("btn-cadastrar"));
+
+        fireEvent.change(screen.getByTestId("campo-comentario"), {
+            target: {
+                value: "O batmóvel do Keaton é foda.",
+            },
+        });
+        fireEvent.click(screen.getByTestId("btn-cadastrar"));
+
         // debug();
-        expect(screen.getByText("Que miniatura foda.")).toBeInTheDocument();
+        // expect(screen.getByText("Que miniatura foda.")).toBeInTheDocument();
+        expect(screen.getAllByTestId("lista-comentarios")).toHaveLength(2);
     });
 });
